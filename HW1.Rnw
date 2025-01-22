@@ -33,6 +33,7 @@
 % each time I compile
 <<eval=FALSE, size="scriptsize", warning=FALSE, message=FALSE>>=
 # Code to install the aRtsy package
+install.packages("aRtsy")
 @
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % QUESTION 1b
@@ -42,6 +43,7 @@
 \textbf{Solution:}
 % Note here I have removed eval=FALSE so this code will run
 <<size="scriptsize", warning=FALSE, message=FALSE>>=
+library("aRtsy")
 @
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % QUESTION 1c
@@ -52,15 +54,17 @@
  \texttt{canvas\_collatz()}. Make sure to update the caption.\\
 \textbf{Solution:}
 <<CollatzPlot1, eval=FALSE, size="scriptsize", warning=FALSE, message=FALSE>>=
-# help("aRtsy")
+help("aRtsy")
 @
 %Code to insert a figure [H]ere
 \begin{figure}[H]
 \begin{center}
 <<echo=FALSE,fig.dim=c(4,4)>>=
 <<CollatzPlot1>>
+set.seed(1)
+canvas_collatz(colors = colorPalette("tuscany3"))
 @
-\caption{A caption...}
+\caption{plot 1}
 \label{CollatzPlot1}
 \end{center}
 \end{figure}
@@ -78,8 +82,10 @@
 \begin{center}
 <<echo=FALSE,fig.dim=c(4,4)>>=
 <<CollatzPlot2>>
+set.seed(1313)
+canvas_collatz(colors = colorPalette("tuscany3"))
 @
-\caption{A caption...}
+\caption{plot 2}
 \label{CollatzPlot2}
 \end{center}
 \end{figure}
@@ -106,6 +112,15 @@
 \begin{center}
 <<echo=FALSE,fig.dim=c(4,4)>>=
 <<CollatzPlot3>>
+set.seed(1313)
+canvas_collatz(
+  colors = colorPalette("vrolik4"),
+  background = "#dbdbdb",
+  n = 72,
+  angle.even = 0.0145,
+  angle.odd = -0.05,
+  side = FALSE
+)
 @
 \caption{A caption...}
 \label{CollatzPlot3}
@@ -118,6 +133,20 @@
   Note that I leave creating the R chunk and figure environment to you here. 
   Make sure that your code is well-formatted and your plot is appropriately scaled.\\
   \textbf{Solution:}
+<<CollatzPlot4, eval=FALSE, size="scriptsize", warning=FALSE, message=FALSE>>=
+@
+%Code to insert a figure [H]ere
+\begin{figure}[H]
+\begin{center}
+<<echo=FALSE,fig.dim=c(4,4)>>=
+<<CollatzPlot4>>
+set.seed(2)
+canvas_flame(colors = colorPalette("dark2"))
+@
+\caption{A caption...}
+\label{CollatzPlot4}
+\end{center}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % QUESTION 1g
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,25 +171,30 @@ package for \texttt{R}.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Create a numeric vector containing the integers from 0 to 10 inclusive. Hint -- the solution to this problem is one of these values.\\
 \textbf{Solution:}
+(x = 0:10)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2b
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Complete the algebra to compute $2^{x+1} +2^{x-1}$ for each value in the numerical vector created in step 1. Make sure to save the result to a new numeric vector.\\
 \textbf{Solution:}
+(y = 2^(x+1) + 2^(x-1))
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2c
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Use the which() function to ask which result is 40.\\
 \textbf{Solution:}
+(c = which(y == 40))
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2d
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item What is the solution? That is, what value of x yields $2^{x+1} +2^{x-1} = 40$?\\
 \textbf{Solution:}
+x[c]
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2e
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Explain why this approach wouldn't work for something like $3^{x+2} + 5 (3^x) = 84$ where the solution is $x \approx 1.6309$.\\
+% This approach only works if the solution is an integer between 0 and 10 not if the answer is a decimal.
 \textbf{Solution:}
 \end{enumerate}
 \end{enumerate}
