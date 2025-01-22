@@ -195,7 +195,7 @@ x[c]
   % QUESTION 2e
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Explain why this approach wouldn't work for something like $3^{x+2} + 5 (3^x) = 84$ where the solution is $x \approx 1.6309$.\\
-\textbf{Solution:This approach only works if the solution is an integer between 0 and 10 not if the answer is a decimal.}
+\textbf{Solution: This approach only works if the solution is an integer between 0 and 10 not if the answer is a decimal.}
 \end{enumerate}
 \end{enumerate}
 
